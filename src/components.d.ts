@@ -6,6 +6,20 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ComponenteFormulario {
+    }
+    interface FormularioReactivo {
+    }
+    interface InputEmail {
+        "label": string;
+        "name": string;
+        "value": string;
+    }
+    interface InputText {
+        "label": string;
+        "name": string;
+        "value": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -21,7 +35,61 @@ export namespace Components {
         "middle": string;
     }
 }
+export interface InputEmailCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputEmailElement;
+}
+export interface InputTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputTextElement;
+}
 declare global {
+    interface HTMLComponenteFormularioElement extends Components.ComponenteFormulario, HTMLStencilElement {
+    }
+    var HTMLComponenteFormularioElement: {
+        prototype: HTMLComponenteFormularioElement;
+        new (): HTMLComponenteFormularioElement;
+    };
+    interface HTMLFormularioReactivoElement extends Components.FormularioReactivo, HTMLStencilElement {
+    }
+    var HTMLFormularioReactivoElement: {
+        prototype: HTMLFormularioReactivoElement;
+        new (): HTMLFormularioReactivoElement;
+    };
+    interface HTMLInputEmailElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLInputEmailElement extends Components.InputEmail, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInputEmailElementEventMap>(type: K, listener: (this: HTMLInputEmailElement, ev: InputEmailCustomEvent<HTMLInputEmailElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInputEmailElementEventMap>(type: K, listener: (this: HTMLInputEmailElement, ev: InputEmailCustomEvent<HTMLInputEmailElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInputEmailElement: {
+        prototype: HTMLInputEmailElement;
+        new (): HTMLInputEmailElement;
+    };
+    interface HTMLInputTextElementEventMap {
+        "valueChanged": string;
+    }
+    interface HTMLInputTextElement extends Components.InputText, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInputTextElementEventMap>(type: K, listener: (this: HTMLInputTextElement, ev: InputTextCustomEvent<HTMLInputTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInputTextElementEventMap>(type: K, listener: (this: HTMLInputTextElement, ev: InputTextCustomEvent<HTMLInputTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInputTextElement: {
+        prototype: HTMLInputTextElement;
+        new (): HTMLInputTextElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +97,30 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "componente-formulario": HTMLComponenteFormularioElement;
+        "formulario-reactivo": HTMLFormularioReactivoElement;
+        "input-email": HTMLInputEmailElement;
+        "input-text": HTMLInputTextElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface ComponenteFormulario {
+    }
+    interface FormularioReactivo {
+    }
+    interface InputEmail {
+        "label"?: string;
+        "name"?: string;
+        "onValueChanged"?: (event: InputEmailCustomEvent<string>) => void;
+        "value"?: string;
+    }
+    interface InputText {
+        "label"?: string;
+        "name"?: string;
+        "onValueChanged"?: (event: InputTextCustomEvent<string>) => void;
+        "value"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +136,10 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "componente-formulario": ComponenteFormulario;
+        "formulario-reactivo": FormularioReactivo;
+        "input-email": InputEmail;
+        "input-text": InputText;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +147,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "componente-formulario": LocalJSX.ComponenteFormulario & JSXBase.HTMLAttributes<HTMLComponenteFormularioElement>;
+            "formulario-reactivo": LocalJSX.FormularioReactivo & JSXBase.HTMLAttributes<HTMLFormularioReactivoElement>;
+            "input-email": LocalJSX.InputEmail & JSXBase.HTMLAttributes<HTMLInputEmailElement>;
+            "input-text": LocalJSX.InputText & JSXBase.HTMLAttributes<HTMLInputTextElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

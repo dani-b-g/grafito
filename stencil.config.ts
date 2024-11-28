@@ -1,7 +1,15 @@
 import { Config } from '@stencil/core';
+import { postcss } from '@stencil/postcss';
+import tailwind from 'tailwindcss';
 
 export const config: Config = {
   namespace: 'grafito',
+  plugins: [
+    postcss({
+      plugins: [tailwind],
+    }),
+  ],
+
   outputTargets: [
     {
       type: 'dist',
@@ -21,6 +29,8 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    transform: {
+      '^.+\\.(ts|tsx)$': 'ts-jest',
+    },
   },
 };

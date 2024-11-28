@@ -39,12 +39,21 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
+    "@jest/transform": "^29.7.0",
+    "@jest/types": "^29.6.3",
     "@stencil/core": "^4.7.0",
+    "@stencil/postcss": "^2.1.0",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
+    "autoprefixer": "^10.4.20",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "puppeteer": "^21.9.0"
+    "postcss": "^8.4.49",
+    "puppeteer": "^23.9.0",
+    "tailwindcss": "^3.4.15"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "daisyui": "^4.12.14"
+  }
 }
